@@ -8,7 +8,7 @@ const consoleTable = require("console.table");
 const connection = mysql.createConnection({
     host:"localhost",
     // port number 
-    port:3001,
+    port:3306,
     // username/password on my personal server (SQL)
     user:"root",
     password:"Wildcats22",
@@ -74,6 +74,7 @@ function options() {
 };
 // all the departments in database
 function viewAllDepartments(){
+    // select from theh department table 
     const query = 'SELECT * FROM department';
     connection.query(query, function(err,res){
         if (err) throw err;
@@ -83,18 +84,20 @@ function viewAllDepartments(){
 };
 // all the roles in database
 function viewAllRoles(){
+    // select from the role table
     const query = 'SELECT * FROM role';
     connection.query(query, function(err,res){
-        if (err) throwerr;
+        if (err) throw err;
         console.table('All Roles', res);
         options();
     })
 };
 // all the employees in database
 function viewAllEmployees(){
+    // select from the employee table
     const query = 'SELECT * FROM employee';
     connection.query(query, function(err,res){
-        if (err) throwerr;
+        if (err) throw err;
         console.table('All Employees', res);
         options();
     })

@@ -22,6 +22,6 @@ values
     ("Fernandez","Shaun",22,002),
     ("Peter","John",21,001),
 	("Kelly","Pam",33,003),
-    ("Fernandez","Shaun",32,002),
-    ("Peter","John",31,001);
+    ("Miller","Brandy",32,002),
+    ("Scott","Michael",31,001);
     
