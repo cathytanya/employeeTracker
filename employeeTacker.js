@@ -1,9 +1,9 @@
 // the dependencies needed for the application
-const sql = require("mysql2");
+const mysql = require("mysql2");
 const inquirer = require("inquirer");
-const consoleTable = require("console.table");
-const { Action } = require("rxjs/internal/scheduler/Action");
-const { prompt } = require("inquirer");
+// const consoleTable = require("console.table");
+// const { Action } = require("rxjs/internal/scheduler/Action");
+// const { prompt } = require("inquirer");
 // connecting to database
 const connection = mysql.createConnection({
     host:"localhost",
@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
 })
 // sql server and sql database
 connection.connect(err =>{
-    if(err) throw err;
+    if (err) throw err;
     options();
 })
 
