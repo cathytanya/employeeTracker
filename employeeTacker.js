@@ -2,8 +2,6 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
-// const { Action } = require("rxjs/internal/scheduler/Action");
-// const { prompt } = require("inquirer");
 // connecting to database
 const connection = mysql.createConnection({
     host:"localhost",
@@ -236,6 +234,34 @@ function addEmployees(){
         connection.query(query, (err,res)=>{
             if (err) throw err;
             console.table('All Employee', res);
+            options();
+        });        
+    });
+};
+// update an employee to the database
+function updateEmployees(){
+    const query = 'SELECT employee_id FROM employee';
+    connection.query(query, (err,res) =>{
+        if (err) throw err;
+        inquirer.prompt([
+        {
+            name:"employeeID",
+            type: 'list',
+            choices:()=>res.map(res=> res.job),
+            message: 'Select Employee ID:'
+        }
+    ])})
+    .then(newStep =>{
+        // update the employee job
+        connection.query(
+            `UPDATE employee SET job=${newStep.job_title} WHERE employee_id= ${newStep.employeeID};`,
+            {
+                job: newStep.job_title,
+            });
+        const query = 'SELECT * FROM employee'
+        connection.query(query, (err,res)=>{
+            if (err) throw err;
+            console.table('Updated Employees', res);
             options();
         });        
     });
