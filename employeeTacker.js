@@ -72,33 +72,160 @@ function options() {
         }
     })
 };
-// all the departments in database
+// when the user chooses to see all the departments in database
 function viewAllDepartments(){
     // select from theh department table 
     const query = 'SELECT * FROM department';
-    connection.query(query, function(err,res){
+    connection.query(query, (err,res) =>{
         if (err) throw err;
         console.table('All Departments', res);
         options();
     })
 };
-// all the roles in database
+// when the user chooses to see all the roles in database
 function viewAllRoles(){
     // select from the role table
     const query = 'SELECT * FROM role';
-    connection.query(query, function(err,res){
+    connection.query(query, (err,res)=>{
         if (err) throw err;
         console.table('All Roles', res);
         options();
     })
 };
-// all the employees in database
+// when the user chooses to see all the employees in database
 function viewAllEmployees(){
     // select from the employee table
     const query = 'SELECT * FROM employee';
-    connection.query(query, function(err,res){
+    connection.query(query, (err,res)=>{
         if (err) throw err;
         console.table('All Employees', res);
         options();
     })
+};
+// add a department to the database
+function addDepartments(){
+    // prompt user to enter the new department name
+    inquirer.prompt([
+        {
+            name:"newDepartment",
+            type: 'input',
+            message: 'Enter New Department:'
+        }     
+    ]).then(newStep =>{
+        // inserting the new department name
+        connection.query(
+            'INSERT INTO department',
+            {
+                department_name: newStep.newDepartment
+            });
+        const query = 'SELECT * FROM department'
+        connection.query(query, (err,res)=>{
+            if (err) throw err;
+            console.table('All Employees', res);
+            options();
+        });        
+    });
+};
+// add a roles to the database
+function addRoles(){
+    // prompt user to enter the info needed for the roles added
+    inquirer.prompt([
+        {
+            name:"newRole",
+            type: 'input',
+            message: 'Enter Position:'
+        }, 
+        {
+            name:"salary",
+            type: 'input',
+            message: 'Enter Salary:'
+        },
+        {
+            name:"departmentName",
+            type: 'input',
+            message: 'Enter Department Name:'
+        },
+        {
+            name:"roleID",
+            type: 'input',
+            message: 'Enter Role ID:'
+        }
+    ]).then(newStep =>{
+        // inserting the new role info
+        connection.query(
+            'INSERT INTO role',
+            {
+                job_title: newStep.newRole,
+                department_name: newStep.departmentName,
+                role_id: newStep.roleID,
+                salary: newStep.salary
+
+            });
+        const query = 'SELECT * FROM role'
+        connection.query(query, (err,res)=>{
+            if (err) throw err;
+            console.table('All Roles', res);
+            options();
+        });        
+    });
+};
+// add a employee to the database
+function addEmployees(){
+    // prompt user to enter the info needed for the employees added
+    inquirer.prompt([
+        {
+            name:"lastName",
+            type: 'input',
+            message: 'Enter Last Name:'
+        }, 
+        {
+            name:"firstName",
+            type: 'input',
+            message: 'Enter First Name:'
+        }, 
+        {
+            name:"salary",
+            type: 'input',
+            message: 'Enter Salary:'
+        },
+        {
+            name:"departmentName",
+            type: 'input',
+            message: 'Enter Department Name:'
+        },
+        {
+            name:"employeeID",
+            type: 'input',
+            message: 'Enter Employee ID:'
+        },
+        {
+            name:"job_title",
+            type: 'input',
+            message: 'Enter Position:'
+        },
+        {
+            name:"manager",
+            type: 'input',
+            message: 'Enter Manager Name:'
+        }
+    ]).then(newStep =>{
+        // inserting the new employee info
+        connection.query(
+            'INSERT INTO employee',
+            {
+                employee_id: newStep.employeeID,
+                first_name: newStep.firstName,
+                last_name: newStep.lastName,
+                job: newStep.job_title,
+                department_name: newStep.departmentName,
+                salary: newStep.salary,
+                manager: newStep.manager
+            });
+        const query = 'SELECT * FROM employee'
+        connection.query(query, (err,res)=>{
+            if (err) throw err;
+            console.table('All Employee', res);
+            options();
+        });        
+    });
 };
