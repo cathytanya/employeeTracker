@@ -236,19 +236,25 @@ function addEmployees(){
 function updateEmployees(){
     const query = 'SELECT employee_id FROM employee';
     connection.query(query, (err,res) =>{
-        if (err) throw err;
+        // if (err) throw err;
         inquirer.prompt([
         {
             name:"employeeID",
             type: 'list',
-            choices:()=>res.map(res=> res.job),
+            choices:()=>res.map(res => res.employee_id),
             message: 'Select Employee ID:'
+        },
+        {
+            name:"job_title",
+            type:"input",
+            message:"Enter the Employees Job Position:"
         }
-    ])})
-    .then(newStep =>{
+    ]).then(newStep =>{
         // update the employee job
         connection.query(
-            `UPDATE employee SET job=${newStep.job_title} WHERE employee_id= ${newStep.employeeID};`,
+            `UPDATE employee 
+            SET job=${newStep.job_title} 
+            WHERE employee_id= ${newStep.employeeID};`,
             {
                 job: newStep.job_title,
             });
@@ -259,4 +265,4 @@ function updateEmployees(){
             options();
         });        
     });
-};
+})};
