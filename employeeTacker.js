@@ -59,12 +59,6 @@ function options() {
             case "Update Employees":
                 updateEmployees();
             break;
-            case "Delete Employee":
-                deleteEmployees();
-            break;
-            case "Exit":
-                exit();
-            break;
             default:
                 break;
         }
