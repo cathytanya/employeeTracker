@@ -77,7 +77,25 @@ function viewAllDepartments(){
     const query = 'SELECT * FROM department';
     connection.query(query, function(err,res){
         if (err) throw err;
-        console.table('All Department', res);
+        console.table('All Departments', res);
+        options();
+    })
+};
+// all the roles in database
+function viewAllRoles(){
+    const query = 'SELECT * FROM role';
+    connection.query(query, function(err,res){
+        if (err) throwerr;
+        console.table('All Roles', res);
+        options();
+    })
+};
+// all the employees in database
+function viewAllEmployees(){
+    const query = 'SELECT * FROM employee';
+    connection.query(query, function(err,res){
+        if (err) throwerr;
+        console.table('All Employees', res);
         options();
     })
 };
