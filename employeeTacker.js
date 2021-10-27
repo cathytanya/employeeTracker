@@ -236,7 +236,7 @@ function addEmployees(){
 function updateEmployees(){
     const query = 'SELECT employee_id FROM employee';
     connection.query(query, (err,res) =>{
-        // if (err) throw err;
+        if (err) throw err;
         inquirer.prompt([
         {
             name:"employeeID",
