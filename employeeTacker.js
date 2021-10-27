@@ -251,13 +251,7 @@ function updateEmployees(){
         }
     ]).then(newStep =>{
         // update the employee job
-        connection.query(
-            `UPDATE employee 
-            SET job=${newStep.job_title} 
-            WHERE employee_id= ${newStep.employeeID};`,
-            {
-                job: newStep.job_title,
-            });
+        connection.query(`UPDATE employee SET job = ${newStep.job_title} WHERE employee_id = ${newStep.employeeID};`);
         const query = 'SELECT * FROM employee'
         connection.query(query, (err,res)=>{
             if (err) throw err;
