@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     user:"root",
     password:"Wildcats22",
     // name of database used for the applicaton from SQL
-    database:"company_db"
+    database:"cardealer"
 })
 // sql server and sql database
 connection.connect(err =>{

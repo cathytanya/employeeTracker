@@ -26,7 +26,7 @@ It would allow the owner to organize and plan my business.
         - the salary for that role
 - WHEN I choose to view all employees
     - THEN I am presented with a formatted table showing employee data, including:
-        -  employee ids
+        - employee ids
         - first names
         - last names
         - job titles
