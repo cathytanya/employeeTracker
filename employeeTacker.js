@@ -114,7 +114,7 @@ function addDepartments(){
     ]).then(newStep =>{
         // inserting the new department name
         connection.query(
-            'INSERT INTO department',
+            `INSERT INTO department (department_name) VALUES ('${newStep.newDepartment}');`,
             {
                 department_name: newStep.newDepartment
             });
@@ -153,7 +153,11 @@ function addRoles(){
     ]).then(newStep =>{
         // inserting the new role info
         connection.query(
-            'INSERT INTO role',
+            `INSERT INTO role (job_title,department_name,role_id,salary) VALUES (
+            '${newStep.newRole}',
+            '${newStep.departmentName}',
+            '${newStep.roleID}',
+            '${newStep.salary}');`,
             {
                 job_title: newStep.newRole,
                 department_name: newStep.departmentName,
@@ -211,7 +215,14 @@ function addEmployees(){
     ]).then(newStep =>{
         // inserting the new employee info
         connection.query(
-            'INSERT INTO employee',
+            `INSERT INTO employee (employee_id,first_name,last_name,job,department_name,salary,manager) VALUES (
+                '${newStep.employeeID}',
+                '${newStep.firstName}',
+                '${newStep.lastName}',
+                '${newStep.job_title}',
+                '${newStep.departmentName}',
+                '${newStep.salary}',
+                '${newStep.manager}');`,
             {
                 employee_id: newStep.employeeID,
                 first_name: newStep.firstName,
