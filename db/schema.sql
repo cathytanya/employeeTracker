@@ -1,3 +1,4 @@
+drop database if exists company_db;
 -- create the database
 create database company_db;
 -- use the database
@@ -13,7 +14,7 @@ create TABLE role(
     id INT auto_increment NOT NULL,
     job_title varchar(30) not null,
     department_id int,
-    salary decimal (10,0) not null,
+    salary decimal not null,
 	primary key(id)
 );
 -- created a table for the employee info
