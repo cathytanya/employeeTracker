@@ -1,0 +1,20 @@
+{
+  "name": "employeeTracker",
+  "version": "1.0.0",
+  "description": "To have the user be able to view and manage the departments, roles, and employees in my company.\r It would allow the owner to organize and plan my business.",
+  "main": "employeeTacker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cathytanya/employeeTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cathytanya/employeeTracker/issues"
+  },
+  "homepage": "https://github.com/cathytanya/employeeTracker#readme"
+}
