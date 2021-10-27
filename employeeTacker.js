@@ -1,7 +1,7 @@
 // the dependencies needed for the application
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
-// const consoleTable = require("console.table");
+const consoleTable = require("console.table");
 // const { Action } = require("rxjs/internal/scheduler/Action");
 // const { prompt } = require("inquirer");
 // connecting to database
@@ -67,8 +67,17 @@ function options() {
             case "Exit":
                 exit();
             break;
+            default:
+                break;
         }
     })
 };
 // all the departments in database
-options();
+function viewAllDepartments(){
+    const query = 'SELECT * FROM department';
+    connection.query(query, function(err,res){
+        if (err) throw err;
+        console.table('All Department', res);
+        options();
+    })
+};
