@@ -1,4 +1,4 @@
-# employeeTracker
+# Homework 12: Employee Management System
 
 ## Purpose:
 To have the user be able to view and manage the departments, roles, and employees in my company.
