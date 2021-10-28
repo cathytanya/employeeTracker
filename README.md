@@ -5,6 +5,7 @@ To have the user be able to view and manage the departments, roles, and employee
 It would allow the owner to organize and plan my business.
 
 ## Screencastify Link:
+https://watch.screencastify.com/v/Akt4pZBsGlsNgsFGlkLA
 
 ## Criteria:
 - WHEN I start the application
